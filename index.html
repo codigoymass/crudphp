@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD PHP</title>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css' integrity='sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==' crossorigin='anonymous'/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js' integrity='sha512-5BqtYqlWfJemW5+v+TZUs22uigI8tXeVah5S/1Z6qBLVO7gakAOtkOzUtgq6dsIo5c0NJdmGPs0H9I+2OHUHVQ==' crossorigin='anonymous'></script>
+
+</head>
+<body class="bg-dark d-flex justify-content-center align-items-center" style="height: 100vh">
+
+    <div class="container bg-white rounded p-4 col-xl-10 col-lg-10 mt-5">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="w-100 mb-4" id="lbl_titulo">Lista de usuarios</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_form" onclick="limpiar()">Agregar</button>
+        </div>
+
+        <table class="table table-hover">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                    <th>Género</th>
+                    <th>Celular</th>
+                    <th>Cargo</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acción</th>
+                </tr>
+            </thead>
+            <tbody id="table_data"></tbody>
+
+        </table>
+
+    </div>
+
+    <!-- MODAL FORM -->
+    <div class="modal fade" id="modal_form" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Formulario de usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+
+                    <div class="col-lg-6 mb-3">
+                        <label for="txt_nombre" class="form-label">Nombre</label>
+                        <input type="hidden" id="id">
+                        <input type="text" class="form-control" id="txt_nombre">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="txt_apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="txt_apellido">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="txt_email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="txt_email">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="txt_edad" class="form-label">Edad</label>
+                        <input type="text" class="form-control" id="txt_edad">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="sel_genero" class="form-label">Género</label>
+                        <select class="form-select" id="sel_genero">
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                            <option>Sin Especificar</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="txt_celular" class="form-label">Celular</label>
+                        <input type="text" class="form-control" id="txt_celular">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="sel_cargo" class="form-label">Cargo</label>
+                        <select class="form-select" id="sel_cargo">
+                            <option>Gerente</option>
+                            <option>Asesor Ventas</option>
+                            <option>Asesora</option>
+                            <option>Técnico</option>
+                            <option>Desarrollador</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-check form-switch">
+                            <br />
+                            <input class="form-check-input" type="checkbox" role="switch" id="check_habilitado" checked="checked">
+                            <label class="form-check-label" for="check_habilitado">Habilitado</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardar_usuario()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL FORM -->
+
+    <script src="app.js"></script>
+
+</body>
+</html>
