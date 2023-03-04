@@ -3,7 +3,7 @@ const modal_form = new bootstrap.Modal('#modal_form');
 
 function listar() {
 
-    fetch('controllers/ListarUsuariosController.php')
+    fetch('controllers/usuarios/ListarUsuariosController.php')
     .then(res => res.json())
     .then(data => {
 
@@ -38,7 +38,7 @@ function listar() {
 
 function mostrar_usuario(id) {
 
-    fetch(`controllers/MostrarUsuarioController.php?id=${id}`)
+    fetch(`controllers/usuarios/MostrarUsuarioController.php?id=${id}`)
     .then(res => res.json())
     .then(data => {
 
@@ -72,7 +72,7 @@ function guardar_usuario() {
     formData.append('cargo', document.getElementById('sel_cargo').value);
     formData.append('habilitado', (document.getElementById('check_habilitado').checked) ? 1 : 0);
 
-    fetch(`controllers/GuardarUsuarioController.php`, {
+    fetch(`controllers/usuarios/GuardarUsuarioController.php`, {
         method: 'POST',
         body: formData
     })
@@ -90,7 +90,7 @@ function eliminar_usuario(id) {
 
     if(confirm("¿Quiere eliminar este usuario?")) {
 
-        fetch(`controllers/EliminarUsuarioController.php?id=${id}`)
+        fetch(`controllers/usuarios/EliminarUsuarioController.php?id=${id}`)
         .then(res => res.text())
         .then(data => {
             alert(data);
